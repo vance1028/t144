@@ -45,4 +45,9 @@ function requireRole(...roles) {
   };
 }
 
-module.exports = { login, authRequired, requireRole, JWT_SECRET };
+/** 从 request 中取出已通过 authRequired 中间件挂上的当前用户（路由层方便使用）。 */
+function getCurrentUser(req) {
+  return req.user || null;
+}
+
+module.exports = { login, authRequired, requireRole, getCurrentUser, JWT_SECRET };

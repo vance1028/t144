@@ -28,12 +28,20 @@ async function seed() {
   });
 
   const spaces = [
-    { lotId: lot1.id, code: 'A-01', type: 'STANDARD', status: 'OCCUPIED' },
-    { lotId: lot1.id, code: 'A-02', type: 'STANDARD', status: 'FREE' },
-    { lotId: lot1.id, code: 'A-03', type: 'CHARGING', status: 'FREE' },
-    { lotId: lot1.id, code: 'A-04', type: 'DISABLED', status: 'FREE' },
-    { lotId: lot2.id, code: 'B-01', type: 'STANDARD', status: 'OCCUPIED' },
-    { lotId: lot2.id, code: 'B-02', type: 'OVERSIZE', status: 'FREE' },
+    { lotId: lot1.id, code: 'A-01', type: 'STANDARD', status: 'OCCUPIED', zone: 'A区', entranceDistance: 10 },
+    { lotId: lot1.id, code: 'A-02', type: 'STANDARD', status: 'FREE', zone: 'A区', entranceDistance: 15 },
+    { lotId: lot1.id, code: 'A-03', type: 'CHARGING', status: 'FREE', zone: 'A区', entranceDistance: 8 },
+    { lotId: lot1.id, code: 'A-04', type: 'DISABLED', status: 'FREE', zone: 'A区', entranceDistance: 5 },
+    { lotId: lot1.id, code: 'A-05', type: 'STANDARD', status: 'FREE', zone: 'B区', entranceDistance: 40 },
+    { lotId: lot1.id, code: 'A-06', type: 'CHARGING', status: 'FREE', zone: 'B区', entranceDistance: 45, isReserved: true, reservedFor: '川A99887' },
+    { lotId: lot1.id, code: 'B-01', type: 'STANDARD', status: 'FREE', zone: 'B区', entranceDistance: 35 },
+    { lotId: lot1.id, code: 'B-02', type: 'OVERSIZE', status: 'FREE', zone: 'B区', entranceDistance: 50 },
+    { lotId: lot1.id, code: 'B-03', type: 'STANDARD', status: 'RESERVED', zone: 'B区', entranceDistance: 60, isReserved: true },
+    { lotId: lot1.id, code: 'B-04', type: 'STANDARD', status: 'MAINTENANCE', zone: 'B区', entranceDistance: 65 },
+    { lotId: lot2.id, code: 'B-01', type: 'STANDARD', status: 'OCCUPIED', zone: '主区', entranceDistance: 10 },
+    { lotId: lot2.id, code: 'B-02', type: 'OVERSIZE', status: 'FREE', zone: '主区', entranceDistance: 20 },
+    { lotId: lot2.id, code: 'B-03', type: 'CHARGING', status: 'FREE', zone: '主区', entranceDistance: 15 },
+    { lotId: lot2.id, code: 'B-04', type: 'STANDARD', status: 'FREE', zone: '主区', entranceDistance: 25 },
   ];
   const spaceRecs = [];
   for (const s of spaces) spaceRecs.push(await store.createSpace(s));
